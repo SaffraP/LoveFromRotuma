@@ -8,7 +8,7 @@
         {
           "id": "a-line",
           "name": "A-Line Dress",
-          "image": "images/placeholders/dress-placeholder.svg",
+          "image": "images/DressStyle/Dress_ALine_Outline.jpg",
           "price_adult_from": 49,
           "price_child_from": 29,
           "lengths": [
@@ -23,14 +23,14 @@
           ],
           "description": "A timeless, flattering silhouette that flares gently from the waist.",
           "gallery": [
-            "images/placeholders/dress-gallery-1.svg",
+            "images/DressStyle/Dress_ALine_Outline.jpg",
             "images/placeholders/dress-gallery-2.svg"
           ]
         },
         {
           "id": "midi",
           "name": "Midi Dress",
-          "image": "images/placeholders/dress-placeholder.svg",
+          "image": "images/DressStyle/Dress_Midi_Outline.jpg",
           "price_adult_from": 49,
           "price_child_from": 29,
           "lengths": [
@@ -43,7 +43,7 @@
           ],
           "description": "Relaxed, easy to move in, and suited to warm island days.",
           "gallery": [
-            "images/placeholders/dress-gallery-1.svg",
+            "images/DressStyle/Dress_Midi_Outline.jpg",
             "images/placeholders/dress-gallery-2.svg"
           ]
         }
@@ -57,7 +57,7 @@
         {
           "id": "sheath-column",
           "name": "Sheath / Column Dress",
-          "image": "images/placeholders/dress-placeholder.svg",
+          "image": "images/DressStyle/Dress_ColumnOrSheath_Outline.jpg",
           "price_adult_from": 59,
           "price_child_from": null,
           "lengths": [
@@ -71,14 +71,14 @@
           ],
           "description": "A refined, close-fitted line for a polished, occasion-ready look.",
           "gallery": [
-            "images/placeholders/dress-gallery-1.svg",
+            "images/DressStyle/Dress_ColumnOrSheath_Outline.jpg",
             "images/placeholders/dress-gallery-2.svg"
           ]
         },
         {
           "id": "maxi",
           "name": "Maxi Dress",
-          "image": "images/placeholders/dress-placeholder.svg",
+          "image": "images/DressStyle/Dress_Maxi_Outline.jpg",
           "price_adult_from": 59,
           "price_child_from": null,
           "lengths": [
@@ -91,7 +91,7 @@
           ],
           "description": "A graceful floor-length silhouette for events and celebrations.",
           "gallery": [
-            "images/placeholders/dress-gallery-1.svg",
+            "images/DressStyle/Dress_Maxi_Outline.jpg",
             "images/placeholders/dress-gallery-2.svg"
           ]
         }
@@ -198,17 +198,37 @@
     {
       "id": "sleeveless",
       "name": "Sleeveless",
-      "image": "images/placeholders/sleeve-sleeveless.svg"
+      "image": "images/SleeveStyle/Sleeve_Sleeveless_Outline.jpg"
     },
     {
-      "id": "elastic",
-      "name": "Elastic Sleeve",
-      "image": "images/placeholders/sleeve-elastic.svg"
+      "id": "thin-straps",
+      "name": "Thin Straps",
+      "image": "images/SleeveStyle/Sleeve_ThinStraps_Outline.jpg"
+    },
+    {
+      "id": "strapless",
+      "name": "Strapless",
+      "image": "images/SleeveStyle/Sleeve_Strapless_Outline.jpg"
+    },
+    {
+      "id": "off-shoulder",
+      "name": "Off The Shoulder",
+      "image": "images/SleeveStyle/Sleeve_OffTheShoulder_Outline.jpg"
+    },
+    {
+      "id": "puff",
+      "name": "Puff Sleeve",
+      "image": "images/SleeveStyle/Sleeve_Puff_Outline.jpg"
+    },
+    {
+      "id": "puff-long",
+      "name": "Puff Long Sleeve",
+      "image": "images/SleeveStyle/Sleeve_PuffLong_Outline.jpg"
     },
     {
       "id": "loose",
       "name": "Loose Sleeve",
-      "image": "images/placeholders/sleeve-loose.svg"
+      "image": "images/SleeveStyle/Sleeve_Loose_Outline.jpg"
     }
   ],
   "sizing_notes": {
