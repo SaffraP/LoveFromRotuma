@@ -261,11 +261,19 @@ async function fetchJSON(path) {
 
 function wireConditionalFields() {
   const deliveryRadios = document.querySelectorAll('input[name="delivery-method"]');
+  const meetupGroup = document.getElementById('meetup-spot-group');
   const addressGroup = document.getElementById('delivery-address-group');
+  const meetupSelect = document.getElementById('meetup-spot');
+  const addressField = document.getElementById('delivery-address');
+
   deliveryRadios.forEach(r => r.addEventListener('change', () => {
-    const needsAddress = document.querySelector('input[name="delivery-method"]:checked')?.value !== 'pickup';
-    addressGroup.style.display = needsAddress ? 'block' : 'none';
-    document.getElementById('delivery-address').required = needsAddress;
+    const value = document.querySelector('input[name="delivery-method"]:checked')?.value;
+
+    meetupGroup.style.display = value === 'suva-meetup' ? 'block' : 'none';
+    meetupSelect.required = value === 'suva-meetup';
+
+    addressGroup.style.display = value === 'outside-suva' ? 'block' : 'none';
+    addressField.required = value === 'outside-suva';
   }));
 }
 
@@ -297,6 +305,7 @@ function wireSubmit(form) {
       dressItems = isPremadeMode ? [] : [{ id: nextItemId++, dressType: 'adult', style:'', length:'', sleeves:'', size:'', fabric:'', customMeasurements:false, upsellShown:false }];
       renderDressItems();
       document.getElementById('delivery-address-group').style.display = 'none';
+      document.getElementById('meetup-spot-group').style.display = 'none';
     } catch (err) {
       if (err.message === 'BACKEND_NOT_CONFIGURED') {
         showConfirmation(payload, payload.orderId);
@@ -324,13 +333,17 @@ function collectFormData(form) {
     customMeasurements: item.customMeasurements ? 'Yes — will visit Wailoku for fitting' : 'No'
   }));
 
+  const deliveryMethod = fd.get('delivery-method');
+  const deliverySummary = buildDeliverySummary(deliveryMethod, fd);
+
   return {
     orderId: generateClientOrderId(),
     name: fd.get('name'),
     phone: fd.get('phone'),
     email: fd.get('email') || '',
-    deliveryMethod: fd.get('delivery-method'),
-    deliveryAddress: fd.get('delivery-address') || '',
+    deliveryMethod: deliveryMethod,
+    deliverySummary: deliverySummary,
+    deliveryAddress: fd.get('delivery-address') || fd.get('meetup-spot') || '',
     orderType: isPremadeMode ? 'premade' : 'custom',
     premadeItem: isPremadeMode && premadeSelection ? {
       id: premadeSelection.id, name: premadeSelection.name,
@@ -340,6 +353,13 @@ function collectFormData(form) {
     notes: fd.get('notes') || '',
     submittedAt: new Date().toISOString()
   };
+}
+
+function buildDeliverySummary(deliveryMethod, fd) {
+  if (deliveryMethod === 'pickup-wailoku') return 'Pickup from Wailoku Shop';
+  if (deliveryMethod === 'suva-meetup') return `Free Suva Town Meetup — ${fd.get('meetup-spot') || '(spot not selected)'}`;
+  if (deliveryMethod === 'outside-suva') return `Delivery Outside Suva — ${fd.get('delivery-address') || '(details not provided)'}`;
+  return deliveryMethod || '';
 }
 
 function findStyleName(styleId) {
@@ -425,11 +445,13 @@ function showConfirmation(payload, orderId) {
     <p><strong>Order Reference:</strong> ${escapeHTML(orderId)}</p>
     <p>We've received your order request:</p>
     <ul style="margin:0 0 1rem 1.2rem;">${itemsSummary}</ul>
+    <p><strong>Delivery:</strong> ${escapeHTML(payload.deliverySummary)}</p>
     <p>${payload.email ? "A confirmation has also been sent to your email." : "Since no email was provided, please save this confirmation or take a screenshot."}</p>
     <div class="notice-box" style="margin-top:1rem;">
       A non-refundable 25% deposit (to cover materials) is required via M-PAiSA to
-      <strong>Akanisi Memaofa (+679-934-6552)</strong> before production begins. We'll be in touch
-      by phone${payload.email ? ' or email' : ''} shortly to confirm details and arrange payment.
+      <strong>Akanisi Memaofa (+679-934-6552)</strong> before production begins, for custom dresses.
+      Premade dresses are paid in full at pickup (M-PAiSA or cash). We'll be in touch
+      by phone${payload.email ? ' or email' : ''} shortly to confirm details.
     </div>
   `;
   panel.classList.add('show');

@@ -92,7 +92,7 @@ function notifyOwner(orderId, data) {
     `Name: ${data.name}`,
     `Phone: ${data.phone}`,
     `Email: ${data.email || '(not provided)'}`,
-    `Delivery: ${data.deliveryMethod}${data.deliveryAddress ? ' — ' + data.deliveryAddress : ''}`,
+    `Delivery: ${data.deliverySummary || data.deliveryMethod}`,
     ``
   ];
 
@@ -162,10 +162,12 @@ function confirmToCustomer(orderId, data) {
   }
 
   lines.push(
-    `Delivery: ${data.deliveryMethod}${data.deliveryAddress ? ' — ' + data.deliveryAddress : ''}`,
+    `Delivery: ${data.deliverySummary || data.deliveryMethod}`,
     ``,
-    `A non-refundable 25% deposit (to cover the cost of materials) is required via`,
-    `M-PAiSA to Akanisi Memaofa (+679-934-6552) before production begins.`,
+    isPremade
+      ? `Premade dresses are paid in full at pickup — M-PAiSA or cash accepted.`
+      : `A non-refundable 25% deposit (to cover the cost of materials) is required via`,
+    ...(isPremade ? [] : [`M-PAiSA to Akanisi Memaofa (+679-934-6552) before production begins.`]),
     `We'll be in touch by phone or email shortly to confirm details.`,
     ``,
     `Production typically takes one week or less. If your order isn't collected or`,

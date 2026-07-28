@@ -67,16 +67,26 @@
           <legend>Delivery or Pickup</legend>
           <div class="form-group">
             <div class="radio-row">
-              <label><input type="radio" name="delivery-method" value="pickup" required checked> Pickup from Wailoku</label>
-              <label><input type="radio" name="delivery-method" value="suva-cbd"> Delivery within Suva CBD</label>
-              <label><input type="radio" name="delivery-method" value="viti-levu"> Delivery elsewhere on Viti Levu</label>
+              <label><input type="radio" name="delivery-method" value="pickup-wailoku" required checked> Pickup from Wailoku Shop</label>
+              <label><input type="radio" name="delivery-method" value="suva-meetup"> Free Meetup in Suva Town</label>
+              <label><input type="radio" name="delivery-method" value="outside-suva"> Delivery Outside Suva (Nadi, Outer Islands, etc.)</label>
             </div>
             <span class="error-text">Please choose a delivery option.</span>
           </div>
+
+          <div class="form-group" id="meetup-spot-group" style="display:none;">
+            <label for="meetup-spot">Meetup Spot *</label>
+            <select id="meetup-spot" name="meetup-spot">
+              <option value="" disabled selected>Select a meetup spot</option>
+              <option value="Wailoku Bus Stand">Wailoku Bus Stand</option>
+              <option value="McDonald's">McDonald's</option>
+            </select>
+          </div>
+
           <div class="form-group" id="delivery-address-group" style="display:none;">
-            <label for="delivery-address">Delivery Address</label>
-            <textarea id="delivery-address" name="delivery-address" rows="2"></textarea>
-            <div class="hint">Delivery fees are calculated manually and will be confirmed with you directly.</div>
+            <label for="delivery-address">Your Location & Details *</label>
+            <textarea id="delivery-address" name="delivery-address" rows="2" placeholder="e.g. Nadi, or name of outer island, plus any helpful details"></textarea>
+            <div class="hint">We'll contact you directly to arrange delivery and confirm any fees for locations outside Suva.</div>
           </div>
         </fieldset>
 
@@ -96,7 +106,9 @@
         </fieldset>
 
         <div class="notice-box">
-          <strong>Deposit Required:</strong> A non-refundable 25% deposit (to cover the cost of materials) must be paid via M-PAiSA to <strong>Akanisi Memaofa (+679-934-6552)</strong> before production begins.
+          <strong>Deposit Required (Custom Dresses):</strong> A non-refundable 25% deposit (to cover the cost of materials) must be paid via M-PAiSA to <strong>Akanisi Memaofa (+679-934-6552)</strong> before production begins.
+          <br><br>
+          <strong>Premade Dresses:</strong> Paid in full at pickup — M-PAiSA or cash accepted.
         </div>
 
         <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1.5rem;">Submit Order Request</button>
