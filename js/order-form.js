@@ -120,20 +120,25 @@ function wireSubmit(form) {
       if (APPS_SCRIPT_URL.startsWith('REPLACE_WITH')) {
         throw new Error('BACKEND_NOT_CONFIGURED');
       }
-      const res = await fetch(APPS_SCRIPT_URL, {
+      // Apps Script Web Apps don't return CORS headers on the redirected
+      // response, so we can't read it back — 'no-cors' avoids the browser
+      // blocking the request outright. The order ID was generated above
+      // and sent in the payload, so the confirmation shown here matches
+      // what's logged in the Sheet and emailed to the owner/customer.
+      await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain' }, // avoids CORS preflight with Apps Script
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(payload)
       });
-      const result = await res.json();
-      showConfirmation(payload, result.orderId);
+      showConfirmation(payload, payload.orderId);
       form.reset();
       document.getElementById('delivery-address-group').style.display = 'none';
     } catch (err) {
       if (err.message === 'BACKEND_NOT_CONFIGURED') {
         // Fallback so the site still works before the backend is deployed:
         // display confirmation locally and prompt to email directly.
-        showConfirmation(payload, 'PENDING-SETUP');
+        showConfirmation(payload, payload.orderId);
         alert('Note to site owner: order backend is not yet connected. See /backend/README.md.');
       } else {
         alert('Something went wrong sending your order. Please try again or contact us directly by phone.');
@@ -148,6 +153,7 @@ function wireSubmit(form) {
 function collectFormData(form) {
   const fd = new FormData(form);
   return {
+    orderId: generateClientOrderId(),
     name: fd.get('name'),
     phone: fd.get('phone'),
     email: fd.get('email') || '',
@@ -163,6 +169,13 @@ function collectFormData(form) {
     notes: fd.get('notes') || '',
     submittedAt: new Date().toISOString()
   };
+}
+
+function generateClientOrderId() {
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const stamp = `${String(now.getFullYear()).slice(2)}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+  return `LFR-${stamp}`;
 }
 
 function validateForm(form) {
