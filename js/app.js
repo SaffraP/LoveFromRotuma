@@ -52,11 +52,14 @@ async function fetchJSON(path) {
 }
 
 /* ---------- Dresses (dresses.html) ---------- */
+let loadedDressData = null;
+
 async function renderDressCatalog() {
   const root = document.getElementById('dress-collections');
   if (!root) return;
   try {
     const data = await fetchJSON('data/dresses.json');
+    loadedDressData = data;
     root.innerHTML = data.collections.map(col => `
       <div class="collection-block">
         <div class="eyebrow">Collection</div>
@@ -67,6 +70,10 @@ async function renderDressCatalog() {
         </div>
       </div>
     `).join('<div class="section"></div>');
+
+    root.querySelectorAll('[data-gallery-style]').forEach(el => {
+      el.addEventListener('click', () => openDressGallery(el.dataset.galleryStyle));
+    });
   } catch (e) {
     root.innerHTML = '<p>Dress styles will be listed here shortly. Please check back soon.</p>';
   }
@@ -80,7 +87,9 @@ function styleCardHTML(style) {
 
   return `
     <div class="card">
-      <div class="card-media"><img src="${style.image}" alt="${style.name}" loading="lazy"></div>
+      <div class="card-media" data-gallery-style="${style.id}" style="cursor:pointer;" title="View photos">
+        <img src="${style.image}" alt="${style.name}" loading="lazy">
+      </div>
       <div class="card-body">
         <h3>${style.name}</h3>
         <p style="font-size:var(--step--1); color:var(--color-charcoal-soft); margin-bottom:0.2rem;">${style.description}</p>
@@ -91,10 +100,71 @@ function styleCardHTML(style) {
           <li>Choose your fabric</li>
           <li>Standard or custom size</li>
         </ul>
+        <button type="button" class="btn btn-secondary" style="width:100%; margin-bottom:0.6rem;" data-gallery-style="${style.id}">View Photos</button>
         <a class="btn btn-primary" href="order.html?style=${encodeURIComponent(style.id)}">Order This Style</a>
       </div>
     </div>
   `;
+}
+
+/* ---------- Dress photo gallery / lightbox ---------- */
+let galleryImages = [];
+let galleryIndex = 0;
+
+function openDressGallery(styleId) {
+  if (!loadedDressData) return;
+  let found = null;
+  for (const col of loadedDressData.collections) {
+    const match = col.styles.find(s => s.id === styleId);
+    if (match) { found = match; break; }
+  }
+  if (!found) return;
+
+  galleryImages = [found.image, ...(found.gallery || [])];
+  galleryIndex = 0;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay gallery-overlay';
+  overlay.innerHTML = `
+    <div class="gallery-box">
+      <button type="button" class="gallery-close" aria-label="Close">&times;</button>
+      <h3>${found.name}</h3>
+      <div class="gallery-image-wrap">
+        <button type="button" class="gallery-arrow gallery-prev" aria-label="Previous photo">&#8249;</button>
+        <img src="${galleryImages[0]}" alt="${found.name}" class="gallery-image">
+        <button type="button" class="gallery-arrow gallery-next" aria-label="Next photo">&#8250;</button>
+      </div>
+      <div class="gallery-counter">1 / ${galleryImages.length}</div>
+      <a class="btn btn-primary" style="width:100%; margin-top:1rem;" href="order.html?style=${encodeURIComponent(styleId)}">Order This Style</a>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const imgEl = overlay.querySelector('.gallery-image');
+  const counterEl = overlay.querySelector('.gallery-counter');
+
+  function updateSlide() {
+    imgEl.src = galleryImages[galleryIndex];
+    counterEl.textContent = `${galleryIndex + 1} / ${galleryImages.length}`;
+  }
+
+  overlay.querySelector('.gallery-prev').addEventListener('click', () => {
+    galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateSlide();
+  });
+  overlay.querySelector('.gallery-next').addEventListener('click', () => {
+    galleryIndex = (galleryIndex + 1) % galleryImages.length;
+    updateSlide();
+  });
+  overlay.querySelector('.gallery-close').addEventListener('click', () => overlay.remove());
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+
+  function onKey(e) {
+    if (e.key === 'Escape') { overlay.remove(); document.removeEventListener('keydown', onKey); }
+    if (e.key === 'ArrowLeft') overlay.querySelector('.gallery-prev').click();
+    if (e.key === 'ArrowRight') overlay.querySelector('.gallery-next').click();
+  }
+  document.addEventListener('keydown', onKey);
 }
 
 /* ---------- Premade (premade.html) ---------- */

@@ -240,7 +240,7 @@ legend { font-weight: 700; padding: 0 0.4rem; font-family: var(--font-display); 
 .site-footer { background: var(--color-charcoal); color: var(--color-sand); padding: 3rem 0 1.5rem; }
 .footer-grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 .footer-grid h4 { color: var(--color-white); }
-.footer-grid a { color: var(--color-sand); opacity: 0.85; }
+.footer-grid a, .footer-grid li { color: var(--color-sand); opacity: 0.85; overflow-wrap: break-word; word-break: break-word; }
 .footer-grid a:hover { opacity: 1; text-decoration: underline; }
 .footer-bottom {
   margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.12);
@@ -275,6 +275,31 @@ legend { font-weight: 700; padding: 0 0.4rem; font-family: var(--font-display); 
 .modal-box h3 { margin-bottom: 0.6rem; }
 .modal-actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
 .modal-actions .btn { flex: 1; }
+
+/* ---- Dress photo gallery / lightbox ---- */
+.gallery-box {
+  background: var(--color-white); border-radius: var(--radius-lg); padding: 1.6rem;
+  max-width: 480px; width: 100%; box-shadow: var(--shadow-soft); position: relative;
+  max-height: 90vh; overflow-y: auto;
+}
+.gallery-box h3 { text-align: center; margin-bottom: 1rem; }
+.gallery-close {
+  position: absolute; top: 0.8rem; right: 1rem; background: none; border: none;
+  font-size: 1.8rem; line-height: 1; color: var(--color-charcoal-soft);
+}
+.gallery-image-wrap {
+  position: relative; aspect-ratio: 4/5; border-radius: var(--radius-md); overflow: hidden;
+  background: var(--color-sand);
+}
+.gallery-image { width: 100%; height: 100%; object-fit: cover; }
+.gallery-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.85);
+  border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.5rem;
+  color: var(--color-charcoal); display: flex; align-items: center; justify-content: center;
+}
+.gallery-prev { left: 0.7rem; }
+.gallery-next { right: 0.7rem; }
+.gallery-counter { text-align: center; margin-top: 0.7rem; font-size: 0.85rem; color: var(--color-charcoal-soft); }
 
 .coming-soon { text-align: center; padding: 5rem 0; }
 .coming-soon svg { width: 140px; margin: 0 auto 1.5rem; color: var(--color-leaf); }

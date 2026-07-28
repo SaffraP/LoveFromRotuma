@@ -69,7 +69,33 @@ Drop real photos into the matching `images/` subfolder and update the `image` pa
 
 See `SETUP.md` for account setup and step-by-step deployment instructions.
 
-## Future features (not built yet, but the structure supports adding them without a rebuild)
+## Adding real photos
+
+### Akanisi & Emerald (About page + homepage)
+Upload as:
+- `images/team/akanisi.jpg`
+- `images/team/emerald.jpg`
+
+The pages already point to these exact filenames — once uploaded with those names, they'll appear automatically, no code changes needed. Portrait-orientation photos work best (roughly 4:5, e.g. 1000×1250px).
+
+### Dress styles — silhouette + gallery photos
+Each dress style in `data/dresses.json` has two image fields:
+- `"image"` — the single photo used on the catalog card. **Set this to your blacked-out silhouette/shape photo** — this is what customers see while browsing and choosing a style.
+- `"gallery"` — an array of photo paths shown when someone clicks "View Photos" or the card image. **Put the silhouette first, then your model photos in different patterns**, e.g.:
+  ```json
+  "image": "images/dresses/a-line-silhouette.jpg",
+  "gallery": [
+    "images/dresses/a-line-silhouette.jpg",
+    "images/dresses/a-line-floral-1.jpg",
+    "images/dresses/a-line-stripe-1.jpg"
+  ]
+  ```
+  Upload photos into `images/dresses/` (any filenames you like — just make sure the paths in the JSON match exactly), then edit the `image` and `gallery` fields for that style. The gallery viewer has arrows/swipe between photos automatically — no extra setup needed.
+
+### Fabrics — colors and patterns
+Each fabric in `data/fabrics.json` has an `"image"` field. Upload solid-color swatches and pattern swatches into `images/fabrics/`, then point each fabric's `"image"` to its file. The existing `"category"` field ("Standard" for solids vs "By Availability" for prints) already separates these into the two groups you described — add more fabric entries the same way if you have more than the current five.
+
+Recommended: square-ish photos (roughly 800×800px) for fabric swatches, and compress everything before uploading (e.g. via squoosh.app) so the site stays fast to load.
 - Customer reviews
 - Plant inventory
 - Gift vouchers

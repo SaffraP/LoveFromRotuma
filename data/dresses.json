@@ -11,9 +11,21 @@
           "image": "images/placeholders/dress-placeholder.svg",
           "price_adult_from": 49,
           "price_child_from": 29,
-          "lengths": ["Knee Length", "Midi", "Floor Length"],
-          "sleeves": ["Sleeveless", "Elastic Sleeve", "Loose Sleeve"],
-          "description": "A timeless, flattering silhouette that flares gently from the waist."
+          "lengths": [
+            "Knee Length",
+            "Midi",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Elastic Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A timeless, flattering silhouette that flares gently from the waist.",
+          "gallery": [
+            "images/placeholders/dress-gallery-1.svg",
+            "images/placeholders/dress-gallery-2.svg"
+          ]
         },
         {
           "id": "midi",
@@ -21,9 +33,19 @@
           "image": "images/placeholders/dress-placeholder.svg",
           "price_adult_from": 49,
           "price_child_from": 29,
-          "lengths": ["Midi"],
-          "sleeves": ["Sleeveless", "Elastic Sleeve", "Loose Sleeve"],
-          "description": "Relaxed, easy to move in, and suited to warm island days."
+          "lengths": [
+            "Midi"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Elastic Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "Relaxed, easy to move in, and suited to warm island days.",
+          "gallery": [
+            "images/placeholders/dress-gallery-1.svg",
+            "images/placeholders/dress-gallery-2.svg"
+          ]
         }
       ]
     },
@@ -38,9 +60,20 @@
           "image": "images/placeholders/dress-placeholder.svg",
           "price_adult_from": 59,
           "price_child_from": null,
-          "lengths": ["Knee Length", "Floor Length"],
-          "sleeves": ["Sleeveless", "Elastic Sleeve", "Loose Sleeve"],
-          "description": "A refined, close-fitted line for a polished, occasion-ready look."
+          "lengths": [
+            "Knee Length",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Elastic Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A refined, close-fitted line for a polished, occasion-ready look.",
+          "gallery": [
+            "images/placeholders/dress-gallery-1.svg",
+            "images/placeholders/dress-gallery-2.svg"
+          ]
         },
         {
           "id": "maxi",
@@ -48,9 +81,19 @@
           "image": "images/placeholders/dress-placeholder.svg",
           "price_adult_from": 59,
           "price_child_from": null,
-          "lengths": ["Floor Length"],
-          "sleeves": ["Sleeveless", "Elastic Sleeve", "Loose Sleeve"],
-          "description": "A graceful floor-length silhouette for events and celebrations."
+          "lengths": [
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Elastic Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A graceful floor-length silhouette for events and celebrations.",
+          "gallery": [
+            "images/placeholders/dress-gallery-1.svg",
+            "images/placeholders/dress-gallery-2.svg"
+          ]
         }
       ]
     },
@@ -65,24 +108,67 @@
           "image": "images/placeholders/dress-placeholder.svg",
           "price_adult_from": null,
           "price_child_from": 29,
-          "lengths": ["Knee Length", "Midi"],
-          "sleeves": ["Sleeveless", "Elastic Sleeve", "Loose Sleeve"],
-          "description": "Comfortable, durable, and made to fit growing girls."
+          "lengths": [
+            "Knee Length",
+            "Midi"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Elastic Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "Comfortable, durable, and made to fit growing girls.",
+          "gallery": [
+            "images/placeholders/dress-gallery-1.svg",
+            "images/placeholders/dress-gallery-2.svg"
+          ]
         }
       ]
     }
   ],
   "sizes": {
     "adult": [
-      { "label": "Small", "bust_cm": "84-89", "waist_cm": "66-71", "hip_cm": "91-96" },
-      { "label": "Medium", "bust_cm": "90-95", "waist_cm": "72-77", "hip_cm": "97-102" },
-      { "label": "Large", "bust_cm": "96-103", "waist_cm": "78-85", "hip_cm": "103-110" },
-      { "label": "XL", "bust_cm": "104-111", "waist_cm": "86-93", "hip_cm": "111-118" },
-      { "label": "XXL", "bust_cm": "112-119", "waist_cm": "94-101", "hip_cm": "119-126" }
+      {
+        "label": "Small",
+        "bust_cm": "84-89",
+        "waist_cm": "66-71",
+        "hip_cm": "91-96"
+      },
+      {
+        "label": "Medium",
+        "bust_cm": "90-95",
+        "waist_cm": "72-77",
+        "hip_cm": "97-102"
+      },
+      {
+        "label": "Large",
+        "bust_cm": "96-103",
+        "waist_cm": "78-85",
+        "hip_cm": "103-110"
+      },
+      {
+        "label": "XL",
+        "bust_cm": "104-111",
+        "waist_cm": "86-93",
+        "hip_cm": "111-118"
+      },
+      {
+        "label": "XXL",
+        "bust_cm": "112-119",
+        "waist_cm": "94-101",
+        "hip_cm": "119-126"
+      }
     ],
-    "child_ages": ["2-3 yrs", "4-5 yrs", "6-7 yrs", "8-9 yrs", "10-11 yrs", "12-13 yrs"],
+    "child_ages": [
+      "2-3 yrs",
+      "4-5 yrs",
+      "6-7 yrs",
+      "8-9 yrs",
+      "10-11 yrs",
+      "12-13 yrs"
+    ],
     "custom_available": true
   },
   "production_time": "Typically completed within one week, may vary during busy periods.",
-  "alterations": "Alterations and custom fittings are available. Please visit the shop in Wailoku — most custom fittings can be done on the spot."
+  "alterations": "Alterations and custom fittings are available. Please visit the shop in Wailoku \u2014 most custom fittings can be done on the spot."
 }

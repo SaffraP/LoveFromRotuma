@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div>
           <h4>Follow Along</h4>
           <ul class="stack-lg" style="gap:0.5rem;">
-            <li style="opacity:0.7;">Facebook — coming soon 🧵</li>
-            <li style="opacity:0.7;">Instagram — coming soon 🧵</li>
-            <li style="opacity:0.7;">TikTok — coming soon 🧵</li>
+            <li style="opacity:0.7;">Facebook — coming soon</li>
+            <li style="opacity:0.7;">Instagram — coming soon</li>
+            <li style="opacity:0.7;">TikTok — coming soon</li>
           </ul>
         </div>
       </div>
