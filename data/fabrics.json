@@ -1,0 +1,40 @@
+{
+  "fabrics": [
+    {
+      "id": "solid-ocean",
+      "name": "Solid — Ocean Blue",
+      "image": "images/placeholders/fabric-placeholder.svg",
+      "category": "Standard",
+      "available": true
+    },
+    {
+      "id": "solid-sand",
+      "name": "Solid — Soft Sand",
+      "image": "images/placeholders/fabric-placeholder.svg",
+      "category": "Standard",
+      "available": true
+    },
+    {
+      "id": "solid-white",
+      "name": "Solid — Warm White",
+      "image": "images/placeholders/fabric-placeholder.svg",
+      "category": "Standard",
+      "available": true
+    },
+    {
+      "id": "floral-hibiscus",
+      "name": "Floral — Hibiscus",
+      "image": "images/placeholders/fabric-placeholder.svg",
+      "category": "By Availability",
+      "available": true
+    },
+    {
+      "id": "tropical-leaf",
+      "name": "Print — Tropical Leaf",
+      "image": "images/placeholders/fabric-placeholder.svg",
+      "category": "By Availability",
+      "available": false
+    }
+  ],
+  "note": "Fabric availability changes regularly. If your selected fabric is unavailable, we will contact you to discuss suitable alternatives before production begins."
+}
