@@ -43,13 +43,15 @@ Edit `data/dresses.json`. Add a new object inside the relevant collection's `sty
 ### Add or remove a premade (ready-made) dress
 Edit `data/premade.json`. Add a new object with `name`, `image`, `size`, `price`, and `status` (`"available"` or `"sold"`). Delete an entry once it's sold and you don't want to keep a record of it, or just set `status` to `"sold"` to keep history.
 
+**Marking a premade dress as sold:** When someone requests a premade dress through the order form, the owner notification email flags it clearly and reminds you to update its status. Since deposits are confirmed manually anyway (there's no online payment yet), the workflow is: customer requests it → you confirm the M-PAiSA deposit → you edit that item's `"status"` to `"sold"` in `data/premade.json` and push the change. The site rebuilds and the dress disappears from "available" within a minute or two of pushing. There's currently no automatic locking the moment someone submits a request, so if two people request the same dress before you've updated the status, you'll need to handle that manually (contact whichever one you can't fulfill).
+
 ### Add or update a fabric
 Edit `data/fabrics.json`. Set `"available": false` for anything currently out of stock — it'll still show in the dropdown but flagged as "check availability," matching your policy of contacting customers about unavailable fabrics.
 
 ### Change contact details, social links, phone, or M-PAiSA number
 - Contact details: `contact.html`
 - Social links: `js/include-footer.js`
-- M-PAiSA number/name: appears in `order.html`, `js/order-form.js`, `backend/Code.gs`, and `terms.html` — search each file for `9999999` and `Akanisi Memaofa` to update everywhere at once.
+- M-PAiSA number/name: `Akanisi Memaofa (+679-934-6552)` — appears in `order.html`, `js/order-form.js`, `backend/Code.gs`. Search each file for `Akanisi Memaofa` if it ever needs to change again.
 
 ### Replace placeholder photos
 Drop real photos into the matching `images/` subfolder and update the `image` path in the relevant `.html` or `.json` file. Recommended: compress photos before uploading (e.g. via squoosh.app) so the site stays fast.

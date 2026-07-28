@@ -80,56 +80,15 @@
           </div>
         </fieldset>
 
+        <div id="premade-summary" style="display:none;" class="notice-box"></div>
+
+        <div id="dress-items-wrapper">
+          <div id="dress-items-container"></div>
+          <button type="button" id="add-dress-btn" class="btn btn-secondary" style="width:100%; margin-bottom:1.5rem;">+ Add Another Dress</button>
+        </div>
+
         <fieldset>
-          <legend>Your Dress</legend>
-          <div class="form-group">
-            <label>Adult or Child *</label>
-            <div class="radio-row">
-              <label><input type="radio" name="dress-type" value="adult" required checked> Adult</label>
-              <label><input type="radio" name="dress-type" value="child"> Child</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="dress-style">Dress Style *</label>
-            <select id="dress-style" name="dress-style" required>
-              <option value="" disabled selected>Select a style</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="length">Length *</label>
-            <select id="length" name="length" required>
-              <option value="" disabled selected>Select a length</option>
-              <option value="Knee Length">Knee Length</option>
-              <option value="Midi">Midi</option>
-              <option value="Floor Length">Floor Length</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="sleeves">Sleeves *</label>
-            <select id="sleeves" name="sleeves" required>
-              <option value="" disabled selected>Select sleeve style</option>
-              <option value="Sleeveless">Sleeveless</option>
-              <option value="Elastic Sleeve">Elastic Sleeve</option>
-              <option value="Loose Sleeve">Loose Sleeve</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="size">Size *</label>
-            <select id="size" name="size" required>
-              <option value="" disabled selected>Select a size</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label><input type="checkbox" id="custom-measurements" name="custom-measurements" style="width:auto; margin-right:0.5rem;">I'd like custom measurements / a fitting</label>
-            <div class="hint" id="custom-measurements-note" style="display:none;">Great — please visit our Wailoku shop; most custom fittings can be done on the spot.</div>
-          </div>
-          <div class="form-group">
-            <label for="fabric">Fabric *</label>
-            <select id="fabric" name="fabric" required>
-              <option value="" disabled selected>Select a fabric</option>
-            </select>
-            <div class="hint">If your selected fabric is unavailable, we'll contact you to discuss alternatives before production begins.</div>
-          </div>
+          <legend>Anything Else?</legend>
           <div class="form-group">
             <label for="notes">Additional Notes</label>
             <textarea id="notes" name="notes" rows="3" placeholder="Anything else we should know?"></textarea>
@@ -137,7 +96,7 @@
         </fieldset>
 
         <div class="notice-box">
-          <strong>Deposit Required:</strong> A non-refundable 25% deposit (to cover the cost of materials) must be paid via M-PAiSA to <strong>Akanisi Memaofa (9999999)</strong> before production begins.
+          <strong>Deposit Required:</strong> A non-refundable 25% deposit (to cover the cost of materials) must be paid via M-PAiSA to <strong>Akanisi Memaofa (+679-934-6552)</strong> before production begins.
         </div>
 
         <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1.5rem;">Submit Order Request</button>

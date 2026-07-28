@@ -10,6 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
           <p style="opacity:0.85; max-width:26ch;">Handmade dresses crafted with care by Rotuman women in Fiji.</p>
         </div>
         <div>
+          <h4>Contact</h4>
+          <ul class="stack-lg" style="gap:0.5rem;">
+            <li style="opacity:0.85;">+679-934-6552</li>
+            <li style="opacity:0.85;">WithLoveFromRotuma@gmail.com</li>
+            <li style="opacity:0.85;">Lot 2 Kia St, Wailoku, Suva, Fiji</li>
+          </ul>
+        </div>
+        <div>
           <h4>Shop</h4>
           <ul class="stack-lg" style="gap:0.5rem;">
             <li><a href="dresses.html">Made-to-Order Dresses</a></li>
@@ -35,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div>
           <h4>Follow Along</h4>
           <ul class="stack-lg" style="gap:0.5rem;">
-            <li><a href="#">Facebook (placeholder)</a></li>
-            <li><a href="#">Instagram (placeholder)</a></li>
-            <li><a href="#">TikTok (placeholder)</a></li>
+            <li style="opacity:0.7;">Facebook — coming soon 🧵</li>
+            <li style="opacity:0.7;">Instagram — coming soon 🧵</li>
+            <li style="opacity:0.7;">TikTok — coming soon 🧵</li>
           </ul>
         </div>
       </div>
