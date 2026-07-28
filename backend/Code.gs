@@ -8,7 +8,7 @@
  */
 
 // ==== CONFIGURE THESE ====
-const OWNER_EMAIL = 'REPLACE_WITH_AKANISI_GMAIL@gmail.com'; // where new-order notifications go
+const OWNER_EMAIL = 'WithLoveFromRotuma@gmail.com'; // where new-order notifications go
 const SHEET_NAME = 'Orders';
 const BUSINESS_NAME = 'Love From Rotuma';
 // ==========================
