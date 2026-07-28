@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Your Order | Love From Rotuma</title>
+<meta name="description" content="Request your custom, handmade dress from Love From Rotuma.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><img src="images/logo/logo.svg" alt="Love From Rotuma logo">Love From Rotuma</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dresses.html">Dresses</a></li>
+        <li><a href="premade.html">Premade</a></li>
+        <li><a href="plants.html">Plants</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a class="nav-cta" href="order.html">Start Your Order</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="padding-bottom:1rem;">
+    <div class="container center">
+      <span class="eyebrow">Order Request</span>
+      <h1>Start Your Custom Order</h1>
+      <p class="lead" style="max-width:60ch; margin-inline:auto; color:var(--color-charcoal-soft);">
+        Fill in the details below and we'll be in touch to confirm your order and arrange your deposit.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container" style="max-width:760px;">
+      <form id="order-form" class="form-card" novalidate>
+
+        <fieldset>
+          <legend>Your Details</legend>
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error-text">Please enter your name.</span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required>
+            <span class="error-text">Please enter a valid phone number.</span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email (optional)</label>
+            <input type="email" id="email" name="email">
+            <div class="hint">If you provide an email, we'll send an order confirmation there. Otherwise, please save the confirmation shown after you submit.</div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Delivery or Pickup</legend>
+          <div class="form-group">
+            <div class="radio-row">
+              <label><input type="radio" name="delivery-method" value="pickup" required checked> Pickup from Wailoku</label>
+              <label><input type="radio" name="delivery-method" value="suva-cbd"> Delivery within Suva CBD</label>
+              <label><input type="radio" name="delivery-method" value="viti-levu"> Delivery elsewhere on Viti Levu</label>
+            </div>
+            <span class="error-text">Please choose a delivery option.</span>
+          </div>
+          <div class="form-group" id="delivery-address-group" style="display:none;">
+            <label for="delivery-address">Delivery Address</label>
+            <textarea id="delivery-address" name="delivery-address" rows="2"></textarea>
+            <div class="hint">Delivery fees are calculated manually and will be confirmed with you directly.</div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your Dress</legend>
+          <div class="form-group">
+            <label>Adult or Child *</label>
+            <div class="radio-row">
+              <label><input type="radio" name="dress-type" value="adult" required checked> Adult</label>
+              <label><input type="radio" name="dress-type" value="child"> Child</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dress-style">Dress Style *</label>
+            <select id="dress-style" name="dress-style" required>
+              <option value="" disabled selected>Select a style</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="length">Length *</label>
+            <select id="length" name="length" required>
+              <option value="" disabled selected>Select a length</option>
+              <option value="Knee Length">Knee Length</option>
+              <option value="Midi">Midi</option>
+              <option value="Floor Length">Floor Length</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sleeves">Sleeves *</label>
+            <select id="sleeves" name="sleeves" required>
+              <option value="" disabled selected>Select sleeve style</option>
+              <option value="Sleeveless">Sleeveless</option>
+              <option value="Elastic Sleeve">Elastic Sleeve</option>
+              <option value="Loose Sleeve">Loose Sleeve</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="size">Size *</label>
+            <select id="size" name="size" required>
+              <option value="" disabled selected>Select a size</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><input type="checkbox" id="custom-measurements" name="custom-measurements" style="width:auto; margin-right:0.5rem;">I'd like custom measurements / a fitting</label>
+            <div class="hint" id="custom-measurements-note" style="display:none;">Great — please visit our Wailoku shop; most custom fittings can be done on the spot.</div>
+          </div>
+          <div class="form-group">
+            <label for="fabric">Fabric *</label>
+            <select id="fabric" name="fabric" required>
+              <option value="" disabled selected>Select a fabric</option>
+            </select>
+            <div class="hint">If your selected fabric is unavailable, we'll contact you to discuss alternatives before production begins.</div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Anything else we should know?"></textarea>
+          </div>
+        </fieldset>
+
+        <div class="notice-box">
+          <strong>Deposit Required:</strong> A non-refundable 25% deposit (to cover the cost of materials) must be paid via M-PAiSA to <strong>Akanisi Memaofa (9999999)</strong> before production begins.
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:1.5rem;">Submit Order Request</button>
+      </form>
+
+      <div id="confirmation-panel"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer-placeholder"></footer>
+<script src="js/app.js"></script>
+<script src="js/include-footer.js"></script>
+<script src="js/order-form.js"></script>
+</body>
+</html>

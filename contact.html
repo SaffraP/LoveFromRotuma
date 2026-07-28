@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Love From Rotuma</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><img src="images/logo/logo.svg" alt="Love From Rotuma logo">Love From Rotuma</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dresses.html">Dresses</a></li>
+        <li><a href="premade.html">Premade</a></li>
+        <li><a href="plants.html">Plants</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a class="nav-cta" href="order.html">Start Your Order</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:3rem;">
+      <div>
+        <span class="eyebrow">Get in Touch</span>
+        <h1>Contact Us</h1>
+        <p style="color:var(--color-charcoal-soft);">Have a question before ordering? Reach out and we'll get back to you as soon as we can.</p>
+        <ul class="stack-lg" style="gap:1rem; margin-top:1.5rem;">
+          <li><strong>Phone:</strong> <span>[Phone Placeholder]</span></li>
+          <li><strong>Email:</strong> <span>[Email Placeholder]</span></li>
+          <li><strong>Facebook:</strong> <span>[Facebook Placeholder]</span></li>
+          <li><strong>Instagram:</strong> <span>[Instagram Placeholder]</span></li>
+          <li><strong>TikTok:</strong> <span>[TikTok Placeholder]</span></li>
+          <li><strong>Shop Location:</strong> <span>[Wailoku Address Placeholder]</span></li>
+        </ul>
+      </div>
+      <div class="form-card">
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="c-name">Name</label>
+            <input type="text" id="c-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+          <p class="hint" style="margin-top:0.8rem;">This form currently opens your email app. It can be connected to the same order-form backend later — see /backend/README.md.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer-placeholder"></footer>
+<script src="js/app.js"></script>
+<script src="js/include-footer.js"></script>
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('c-name').value;
+    const email = document.getElementById('c-email').value;
+    const message = document.getElementById('c-message').value;
+    const subject = encodeURIComponent('Website enquiry from ' + name);
+    const body = encodeURIComponent(message + '\n\nReply to: ' + email);
+    window.location.href = `mailto:PLACEHOLDER@example.com?subject=${subject}&body=${body}`;
+  });
+</script>
+</body>
+</html>
