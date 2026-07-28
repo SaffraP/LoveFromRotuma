@@ -116,7 +116,7 @@ function renderDressItems() {
       <div class="form-group">
         <label>Dress Body Style *</label>
         <div class="hint" style="margin-bottom:0.5rem;">Pick a silhouette, then mix and match with any length and sleeve style below.</div>
-        ${styleOptionPickerHTML(item.id, item.style)}
+        ${styleOptionPickerHTML(item.id, item.style, item.dressType)}
       </div>
 
       <div class="form-group">
@@ -133,7 +133,7 @@ function renderDressItems() {
         <label>Size *</label>
         <select data-item="${item.id}" data-field="size" required>
           <option value="" disabled ${!item.size ? 'selected' : ''}>Select a size</option>
-          ${sizeOptionsHTML(item.size)}
+          ${sizeOptionsHTML(item.size, item.dressType)}
         </select>
         <div class="hint">
           ${dressData?.sizing_notes?.variation || ''}<br><br>
@@ -171,9 +171,12 @@ function renderDressItems() {
   });
 }
 
-function styleOptionPickerHTML(itemId, selectedStyleId) {
+function styleOptionPickerHTML(itemId, selectedStyleId, dressType) {
   if (!dressData) return '';
-  return dressData.collections.map(col => `
+  const collections = dressType === 'child'
+    ? dressData.collections.filter(c => c.id === 'childrens')
+    : dressData.collections.filter(c => c.id !== 'childrens');
+  return collections.map(col => `
     <div style="margin-bottom:0.8rem;">
       <div style="font-size:0.78rem; font-weight:700; color:var(--color-leaf-deep); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.4rem;">${col.name}</div>
       <div class="option-picker">
@@ -217,14 +220,18 @@ function onOptionCardClick(e) {
   renderDressItems();
 }
 
-function sizeOptionsHTML(selected) {
+function sizeOptionsHTML(selected, dressType) {
   if (!dressData) return '';
-  let html = dressData.sizes.adult.map(s =>
-    `<option value="${s.label}" ${s.label===selected?'selected':''}>${s.label} (Bust ${s.bust_cm}cm / Waist ${s.waist_cm}cm / Hip ${s.hip_cm}cm)</option>`
-  ).join('');
-  html += `<optgroup label="Children's Ages">${dressData.sizes.child_ages.map(age =>
-    `<option value="${age}" ${age===selected?'selected':''}>${age}</option>`
-  ).join('')}</optgroup>`;
+  let html = '';
+  if (dressType === 'child') {
+    html = dressData.sizes.child_ages.map(age =>
+      `<option value="${age}" ${age===selected?'selected':''}>${age}</option>`
+    ).join('');
+  } else {
+    html = dressData.sizes.adult.map(s =>
+      `<option value="${s.label}" ${s.label===selected?'selected':''}>${s.label} (Bust ${s.bust_cm}cm / Waist ${s.waist_cm}cm / Hip ${s.hip_cm}cm)</option>`
+    ).join('');
+  }
   html += `<option value="custom" ${selected==='custom'?'selected':''}>Custom measurements (visit shop for fitting)</option>`;
   return html;
 }
@@ -251,6 +258,14 @@ function onItemFieldChange(e) {
   }
 
   item[field] = e.target.value;
+
+  if (field === 'dressType') {
+    // Style list and size list both depend on adult/child, so previous
+    // selections may no longer be valid — clear and re-render.
+    item.style = '';
+    item.size = '';
+    renderDressItems();
+  }
 }
 
 /* ============================================================
@@ -265,7 +280,7 @@ function maybeShowUpsell(item) {
   overlay.innerHTML = `
     <div class="modal-box">
       <h3>Add a matching ${label} dress? 👗</h3>
-      <p style="color:var(--color-charcoal-soft);">Many families order matching sets. Want to add a ${label.toLowerCase()} version in the same style?</p>
+      <p style="color:var(--color-charcoal-soft);">Many families order matching sets. Want to add a ${label.toLowerCase()} dress to this order too?</p>
       <div class="modal-actions">
         <button type="button" class="btn btn-secondary" id="upsell-no">No thanks</button>
         <button type="button" class="btn btn-primary" id="upsell-yes">Yes, add one</button>
@@ -275,7 +290,7 @@ function maybeShowUpsell(item) {
   document.body.appendChild(overlay);
 
   overlay.querySelector('#upsell-yes').addEventListener('click', () => {
-    addDressItem({ dressType: oppositeType, style: item.style, scrollTo: true });
+    addDressItem({ dressType: oppositeType, scrollTo: true });
     overlay.remove();
   });
   overlay.querySelector('#upsell-no').addEventListener('click', () => overlay.remove());
