@@ -157,6 +157,12 @@
         "bust_cm": "112-119",
         "waist_cm": "94-101",
         "hip_cm": "119-126"
+      },
+      {
+        "label": "XXXL",
+        "bust_cm": "120-127",
+        "waist_cm": "102-109",
+        "hip_cm": "127-134"
       }
     ],
     "child_ages": [
@@ -170,5 +176,44 @@
     "custom_available": true
   },
   "production_time": "Typically completed within one week, may vary during busy periods.",
-  "alterations": "Alterations and custom fittings are available. Please visit the shop in Wailoku \u2014 most custom fittings can be done on the spot."
+  "alterations": "Alterations and custom fittings are available. Please visit the shop in Wailoku \u2014 most custom fittings can be done on the spot.",
+  "lengthOptions": [
+    {
+      "id": "knee",
+      "name": "Knee Length",
+      "image": "images/placeholders/length-knee.svg"
+    },
+    {
+      "id": "midi",
+      "name": "Midi",
+      "image": "images/placeholders/length-midi.svg"
+    },
+    {
+      "id": "floor",
+      "name": "Floor Length",
+      "image": "images/placeholders/length-floor.svg"
+    }
+  ],
+  "sleeveOptions": [
+    {
+      "id": "sleeveless",
+      "name": "Sleeveless",
+      "image": "images/placeholders/sleeve-sleeveless.svg"
+    },
+    {
+      "id": "elastic",
+      "name": "Elastic Sleeve",
+      "image": "images/placeholders/sleeve-elastic.svg"
+    },
+    {
+      "id": "loose",
+      "name": "Loose Sleeve",
+      "image": "images/placeholders/sleeve-loose.svg"
+    }
+  ],
+  "sizing_notes": {
+    "variation": "Sizes are a helpful guide, not an exact science \u2014 since each dress is handmade, there can be noticeable variation between one \"Medium\" and the next. If you're between sizes or unsure, sizing up or visiting the shop for a quick fitting is the safest bet.",
+    "fabric_shrinkage": "All fabrics come prewashed and dried before sewing. If you're still concerned about any additional shrinkage over time, we'd recommend sizing up.",
+    "custom_available": "Need something larger than XXXL, or an in-between size? Custom measurements are always available \u2014 just visit our Wailoku shop for a quick fitting."
+  }
 }

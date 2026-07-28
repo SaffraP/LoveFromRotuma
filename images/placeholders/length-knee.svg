@@ -1,0 +1,5 @@
+<svg width="300" height="380" viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="380" fill="#E9DFCC"/>
+  <rect x="1" y="1" width="298" height="378" fill="none" stroke="#DDD3BE" stroke-width="2"/>
+  <text x="50%" y="50%" font-family="Georgia, serif" font-size="16" fill="#5A564F" text-anchor="middle" dominant-baseline="middle">Knee Length</text>
+</svg>

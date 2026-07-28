@@ -247,6 +247,23 @@ legend { font-weight: 700; padding: 0 0.4rem; font-family: var(--font-display); 
   font-size: 0.8rem; opacity: 0.7; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
 }
 
+/* ---- Visual option picker (style/length/sleeve mix-and-match) ---- */
+.option-picker { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.option-card {
+  width: 92px; cursor: pointer; text-align: center; border: 2px solid transparent;
+  border-radius: var(--radius-sm); padding: 0.3rem; transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.option-card:hover { transform: translateY(-2px); }
+.option-card img {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: var(--radius-sm);
+  background: var(--color-sand); border: 1px solid var(--color-line);
+}
+.option-card span { display: block; font-size: 0.72rem; margin-top: 0.3rem; color: var(--color-charcoal-soft); }
+.option-card.selected { border-color: var(--color-ocean); }
+.option-card.selected img { border-color: var(--color-ocean); }
+.option-card.selected span { color: var(--color-ocean); font-weight: 700; }
+.field-error .option-picker { outline: 2px solid var(--color-coral); border-radius: var(--radius-sm); padding: 0.4rem; }
+
 /* ---- Dress items (multi-dress order) ---- */
 .dress-item-card {
   border: 1.5px solid var(--color-line); border-radius: var(--radius-md);

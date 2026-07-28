@@ -114,27 +114,19 @@ function renderDressItems() {
       </div>
 
       <div class="form-group">
-        <label>Dress Style *</label>
-        <select data-item="${item.id}" data-field="style" required>
-          <option value="" disabled ${!item.style ? 'selected' : ''}>Select a style</option>
-          ${styleOptionsHTML(item.style)}
-        </select>
+        <label>Dress Body Style *</label>
+        <div class="hint" style="margin-bottom:0.5rem;">Pick a silhouette, then mix and match with any length and sleeve style below.</div>
+        ${styleOptionPickerHTML(item.id, item.style)}
       </div>
 
       <div class="form-group">
         <label>Length *</label>
-        <select data-item="${item.id}" data-field="length" required>
-          <option value="" disabled ${!item.length ? 'selected' : ''}>Select a length</option>
-          ${['Knee Length','Midi','Floor Length'].map(l => `<option value="${l}" ${item.length===l?'selected':''}>${l}</option>`).join('')}
-        </select>
+        ${optionPickerHTML(dressData?.lengthOptions || [], item.length, item.id, 'length')}
       </div>
 
       <div class="form-group">
         <label>Sleeves *</label>
-        <select data-item="${item.id}" data-field="sleeves" required>
-          <option value="" disabled ${!item.sleeves ? 'selected' : ''}>Select sleeve style</option>
-          ${['Sleeveless','Elastic Sleeve','Loose Sleeve'].map(s => `<option value="${s}" ${item.sleeves===s?'selected':''}>${s}</option>`).join('')}
-        </select>
+        ${optionPickerHTML(dressData?.sleeveOptions || [], item.sleeves, item.id, 'sleeves')}
       </div>
 
       <div class="form-group">
@@ -143,6 +135,11 @@ function renderDressItems() {
           <option value="" disabled ${!item.size ? 'selected' : ''}>Select a size</option>
           ${sizeOptionsHTML(item.size)}
         </select>
+        <div class="hint">
+          ${dressData?.sizing_notes?.variation || ''}<br><br>
+          ${dressData?.sizing_notes?.fabric_shrinkage || ''}<br><br>
+          ${dressData?.sizing_notes?.custom_available || ''}
+        </div>
       </div>
 
       <div class="form-group">
@@ -161,23 +158,63 @@ function renderDressItems() {
     </div>
   `).join('');
 
-  // Wire up change handlers for this render pass
+  // Wire up change/click handlers for this render pass
   container.querySelectorAll('[data-item][data-field]').forEach(el => {
-    const evt = el.type === 'checkbox' ? 'change' : (el.tagName === 'SELECT' ? 'change' : 'input');
-    el.addEventListener(evt, onItemFieldChange);
+    if (el.tagName === 'SELECT' || el.type === 'radio') el.addEventListener('change', onItemFieldChange);
+    if (el.type === 'checkbox') el.addEventListener('change', onItemFieldChange);
+  });
+  container.querySelectorAll('.option-card').forEach(card => {
+    card.addEventListener('click', onOptionCardClick);
   });
   container.querySelectorAll('[data-remove]').forEach(btn => {
     btn.addEventListener('click', () => removeDressItem(Number(btn.dataset.remove)));
   });
 }
 
-function styleOptionsHTML(selected) {
+function styleOptionPickerHTML(itemId, selectedStyleId) {
   if (!dressData) return '';
   return dressData.collections.map(col => `
-    <optgroup label="${col.name}">
-      ${col.styles.map(s => `<option value="${s.id}" ${s.id===selected?'selected':''}>${s.name}</option>`).join('')}
-    </optgroup>
+    <div style="margin-bottom:0.8rem;">
+      <div style="font-size:0.78rem; font-weight:700; color:var(--color-leaf-deep); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.4rem;">${col.name}</div>
+      <div class="option-picker">
+        ${col.styles.map(s => `
+          <div class="option-card ${s.id === selectedStyleId ? 'selected' : ''}" data-item="${itemId}" data-field="style" data-value="${s.id}">
+            <img src="${s.image}" alt="${s.name}">
+            <span>${s.name}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
   `).join('');
+}
+
+function optionPickerHTML(options, selectedValue, itemId, field) {
+  return `<div class="option-picker">` + options.map(opt => `
+    <div class="option-card ${opt.name === selectedValue ? 'selected' : ''}" data-item="${itemId}" data-field="${field}" data-value="${opt.name}">
+      <img src="${opt.image}" alt="${opt.name}">
+      <span>${opt.name}</span>
+    </div>
+  `).join('') + `</div>`;
+}
+
+function onOptionCardClick(e) {
+  const card = e.currentTarget;
+  const id = Number(card.dataset.item);
+  const field = card.dataset.field;
+  const value = card.dataset.value;
+  const item = dressItems.find(i => i.id === id);
+  if (!item) return;
+
+  item[field] = value;
+
+  if (field === 'style' && !item.upsellShown) {
+    item.upsellShown = true;
+    renderDressItems();
+    maybeShowUpsell(item);
+    return;
+  }
+
+  renderDressItems();
 }
 
 function sizeOptionsHTML(selected) {
@@ -214,12 +251,6 @@ function onItemFieldChange(e) {
   }
 
   item[field] = e.target.value;
-
-  // Trigger the matching-set upsell once per item, right after they pick a style
-  if (field === 'style' && !item.upsellShown) {
-    item.upsellShown = true;
-    maybeShowUpsell(item);
-  }
 }
 
 /* ============================================================
@@ -402,8 +433,20 @@ function validateForm(form) {
     valid = false;
   }
 
-  // Dress item fields (data-item/data-field based, not part of native form validation)
+  // Dress item fields: style/length/sleeves live in JS state (visual cards), size/fabric are selects
   if (!isPremadeMode) {
+    dressItems.forEach(item => {
+      const card = document.getElementById(`dress-item-${item.id}`);
+      if (!card) return;
+      ['style', 'length', 'sleeves'].forEach(field => {
+        const hasValue = !!item[field];
+        // find the form-group whose visual picker holds cards for this field
+        const groupEls = card.querySelectorAll(`[data-field="${field}"]`);
+        const group = groupEls[0]?.closest('.form-group');
+        if (group) group.classList.toggle('field-error', !hasValue);
+        if (!hasValue) valid = false;
+      });
+    });
     document.querySelectorAll('#dress-items-container select[required]').forEach(sel => {
       if (!sel.value) {
         sel.closest('.form-group').classList.add('field-error');

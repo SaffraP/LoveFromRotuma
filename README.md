@@ -92,6 +92,17 @@ Each dress style in `data/dresses.json` has two image fields:
   ```
   Upload photos into `images/dresses/` (any filenames you like — just make sure the paths in the JSON match exactly), then edit the `image` and `gallery` fields for that style. The gallery viewer has arrows/swipe between photos automatically — no extra setup needed.
 
+### Length & sleeve option pictures (order form)
+On the order form, customers now pick body style, length, and sleeves as separate visual cards they can mix and match — each with its own small reference image. These live in `data/dresses.json` under `lengthOptions` and `sleeveOptions`:
+```json
+"lengthOptions": [
+  { "id": "knee", "name": "Knee Length", "image": "images/lengths/knee.jpg" },
+  { "id": "midi", "name": "Midi", "image": "images/lengths/midi.jpg" },
+  { "id": "floor", "name": "Floor Length", "image": "images/lengths/floor.jpg" }
+]
+```
+Same idea for `sleeveOptions`. These are shared across every dress style (a knee-length option looks the same regardless of body style), so you only need one photo per length and one per sleeve type — a simple diagram or a photo of the hemline/sleeve on any dress works well. They currently point to placeholder graphics in `images/placeholders/` — swap in real photos (any folder/filename you like, e.g. `images/lengths/` and `images/sleeves/`) the same way as any other image field, just update the `image` path to match.
+
 ### Fabrics — colors and patterns
 Each fabric in `data/fabrics.json` has an `"image"` field. Upload solid-color swatches and pattern swatches into `images/fabrics/`, then point each fabric's `"image"` to its file. The existing `"category"` field ("Standard" for solids vs "By Availability" for prints) already separates these into the two groups you described — add more fabric entries the same way if you have more than the current five.
 
