@@ -45,6 +45,32 @@
           "gallery": [
             "images/DressStyle/Dress_Midi_Outline.jpg",
             "images/placeholders/dress-gallery-2.svg"
+          ],
+          "comingSoon": true
+        },
+        {
+          "id": "shift",
+          "name": "Shift",
+          "image": "images/placeholders/dress-placeholder.svg",
+          "price_adult_from": 49,
+          "price_child_from": null,
+          "lengths": [
+            "Knee Length",
+            "Midi",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Thin Straps",
+            "Strapless",
+            "Off The Shoulder",
+            "Puff Sleeve",
+            "Puff Long Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A simple, straight-cut silhouette \u2014 easy to wear and move in.",
+          "gallery": [
+            "images/placeholders/dress-placeholder.svg"
           ]
         }
       ]
@@ -73,7 +99,8 @@
           "gallery": [
             "images/DressStyle/Dress_ColumnOrSheath_Outline.jpg",
             "images/placeholders/dress-gallery-2.svg"
-          ]
+          ],
+          "comingSoon": true
         },
         {
           "id": "maxi",
@@ -200,7 +227,8 @@
           "description": "A lowered waistline with a gathered skirt for a fun, twirl-friendly fit.",
           "gallery": [
             "images/DressChild/ChildDress_DropWaist.jpg"
-          ]
+          ],
+          "comingSoon": true
         },
         {
           "id": "child-empire-waist",
@@ -225,7 +253,8 @@
           "description": "A raised waistline just under the bust, flowing loosely to the hem.",
           "gallery": [
             "images/DressChild/ChildDress_EmpireWaist.jpg"
-          ]
+          ],
+          "comingSoon": true
         },
         {
           "id": "child-shift",

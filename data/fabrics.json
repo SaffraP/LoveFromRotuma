@@ -1,40 +1,17 @@
 {
   "fabrics": [
-    {
-      "id": "solid-ocean",
-      "name": "Solid — Ocean Blue",
-      "image": "images/placeholders/fabric-placeholder.svg",
-      "category": "Standard",
-      "available": true
-    },
-    {
-      "id": "solid-sand",
-      "name": "Solid — Soft Sand",
-      "image": "images/placeholders/fabric-placeholder.svg",
-      "category": "Standard",
-      "available": true
-    },
-    {
-      "id": "solid-white",
-      "name": "Solid — Warm White",
-      "image": "images/placeholders/fabric-placeholder.svg",
-      "category": "Standard",
-      "available": true
-    },
-    {
-      "id": "floral-hibiscus",
-      "name": "Floral — Hibiscus",
-      "image": "images/placeholders/fabric-placeholder.svg",
-      "category": "By Availability",
-      "available": true
-    },
-    {
-      "id": "tropical-leaf",
-      "name": "Print — Tropical Leaf",
-      "image": "images/placeholders/fabric-placeholder.svg",
-      "category": "By Availability",
-      "available": false
-    }
+    { "id": "solid-yellow", "name": "Solid — Yellow", "image": "images/FabricSolid/SolidYellow.jpg", "category": "Standard", "available": true },
+    { "id": "solid-light-pink", "name": "Solid — Light Pink", "image": "images/FabricSolid/SolidLightPink.jpg", "category": "Standard", "available": true },
+    { "id": "solid-dark-blue", "name": "Solid — Dark Blue", "image": "images/FabricSolid/SolidDarkBlue.jpg", "category": "Standard", "available": true },
+    { "id": "solid-forest-green", "name": "Solid — Forest Green", "image": "images/FabricSolid/SolidForestGreen.jpg", "category": "Standard", "available": true },
+    { "id": "solid-black", "name": "Solid — Black", "image": "images/FabricSolid/SolidBlack.jpg", "category": "Standard", "available": true },
+    { "id": "solid-white", "name": "Solid — White", "image": "images/FabricSolid/SolidWhite.jpg", "category": "Standard", "available": true },
+    { "id": "tapa-purple-white", "name": "Tapa Print — Purple & White", "image": "images/FabricPattern/PatternTapaPurpleAndWhite.jpg", "category": "By Availability", "available": true },
+    { "id": "tapa-pink-black", "name": "Tapa Print — Pink & Black", "image": "images/FabricPattern/PatternTapaPinkAndBlack.jpg", "category": "By Availability", "available": true },
+    { "id": "tapa-red-white", "name": "Tapa Print — Red & White", "image": "images/FabricPattern/PatternTapaRedAndWhite.jpg", "category": "By Availability", "available": true },
+    { "id": "tapa-red-black", "name": "Tapa Print — Red & Black", "image": "images/FabricPattern/PatternTapaRedAndBlack.jpg", "category": "By Availability", "available": true },
+    { "id": "tapa-yellow-black", "name": "Tapa Print — Yellow & Black", "image": "images/FabricPattern/PatternTapaYellowAndBlack.jpg", "category": "By Availability", "available": true },
+    { "id": "tapa-brown", "name": "Tapa Print — Brown", "image": "images/FabricPattern/PatternTapaBrown.jpg", "category": "By Availability", "available": true }
   ],
-  "note": "Fabric availability changes regularly. If your selected fabric is unavailable, we will contact you to discuss suitable alternatives before production begins."
+  "note": "Fabric availability changes regularly. If your selected fabric is unavailable, we will contact you to discuss suitable alternatives before production begins. Due to natural batch differences, exact colors and patterns may vary slightly from what's shown."
 }
