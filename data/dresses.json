@@ -23,8 +23,7 @@
           ],
           "description": "A timeless, flattering silhouette that flares gently from the waist.",
           "gallery": [
-            "images/DressStyle/Dress_ALine_Outline.jpg",
-            "images/placeholders/dress-gallery-2.svg"
+            "images/DressStyle/Dress_ALine_Outline.jpg"
           ]
         },
         {
@@ -43,8 +42,7 @@
           ],
           "description": "Relaxed, easy to move in, and suited to warm island days.",
           "gallery": [
-            "images/DressStyle/Dress_Midi_Outline.jpg",
-            "images/placeholders/dress-gallery-2.svg"
+            "images/DressStyle/Dress_Midi_Outline.jpg"
           ],
           "comingSoon": true
         },
@@ -97,8 +95,7 @@
           ],
           "description": "A refined, close-fitted line for a polished, occasion-ready look.",
           "gallery": [
-            "images/DressStyle/Dress_ColumnOrSheath_Outline.jpg",
-            "images/placeholders/dress-gallery-2.svg"
+            "images/DressStyle/Dress_ColumnOrSheath_Outline.jpg"
           ],
           "comingSoon": true
         },
@@ -118,8 +115,7 @@
           ],
           "description": "A graceful floor-length silhouette for events and celebrations.",
           "gallery": [
-            "images/DressStyle/Dress_Maxi_Outline.jpg",
-            "images/placeholders/dress-gallery-2.svg"
+            "images/DressStyle/Dress_Maxi_Outline.jpg"
           ]
         }
       ]
