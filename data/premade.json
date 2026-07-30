@@ -5,7 +5,7 @@
     "image": "images/placeholders/dress-placeholder.svg",
     "size": "Medium",
     "price": 55,
-    "status": "available"
+    "status": "sold"
   },
   {
     "id": "pm-0002",
@@ -21,6 +21,6 @@
     "image": "images/placeholders/dress-placeholder.svg",
     "size": "Large",
     "price": 65,
-    "status": "available"
+    "status": "sold"
   }
 ]
