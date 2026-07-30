@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaq();
   renderDressCatalog();
   renderPremade();
+  renderFabricGallery();
   setActiveNav();
 });
 
@@ -46,7 +47,7 @@ function initFaq() {
 
 /* ---------- Helpers ---------- */
 async function fetchJSON(path) {
-  const res = await fetch(path);
+  const res = await fetch(path, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to load ' + path);
   return res.json();
 }
@@ -173,6 +174,33 @@ function openDressGallery(styleId) {
     if (e.key === 'ArrowRight') overlay.querySelector('.gallery-next').click();
   }
   document.addEventListener('keydown', onKey);
+}
+
+/* ---------- Fabric gallery (dresses.html) ---------- */
+async function renderFabricGallery() {
+  const root = document.getElementById('fabric-gallery');
+  if (!root) return;
+  try {
+    const data = await fetchJSON('data/fabrics.json');
+    const categories = [...new Set(data.fabrics.map(f => f.category))];
+    root.innerHTML = categories.map(cat => `
+      <div style="margin-bottom:2rem;">
+        <h3 style="font-size:var(--step-1); margin-bottom:1rem;">${cat === 'Standard' ? 'Solid Colors' : 'Patterns'}</h3>
+        <div class="card-grid">
+          ${data.fabrics.filter(f => f.category === cat).map(f => `
+            <div class="card">
+              <div class="card-media"><img src="${f.image}" alt="${f.name}" loading="lazy"></div>
+              <div class="card-body" style="padding:0.8rem 1rem;">
+                <h3 style="font-size:var(--step-0); margin:0;">${f.name}${f.available ? '' : ' <span style="font-size:0.75rem; color:var(--color-coral); font-weight:500;">(check availability)</span>'}</h3>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  } catch (e) {
+    root.innerHTML = '<p class="center">Fabric options will be listed here shortly.</p>';
+  }
 }
 
 /* ---------- Premade (premade.html) ---------- */

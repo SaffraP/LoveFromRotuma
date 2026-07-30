@@ -149,10 +149,7 @@ function renderDressItems() {
 
       <div class="form-group">
         <label>Fabric *</label>
-        <select data-item="${item.id}" data-field="fabric" required>
-          <option value="" disabled ${!item.fabric ? 'selected' : ''}>Select a fabric</option>
-          ${fabricOptionsHTML(item.fabric)}
-        </select>
+        ${fabricOptionPickerHTML(item.id, item.fabric)}
         <div class="hint">If your selected fabric is unavailable, we'll contact you to discuss alternatives before production begins. Due to natural batch differences, exact colors and patterns may vary slightly from what's shown.</div>
       </div>
     </div>
@@ -236,11 +233,22 @@ function sizeOptionsHTML(selected, dressType) {
   return html;
 }
 
-function fabricOptionsHTML(selected) {
+function fabricOptionPickerHTML(itemId, selectedFabricId) {
   if (!fabricData) return '';
-  return fabricData.fabrics.map(f =>
-    `<option value="${f.id}" ${f.id===selected?'selected':''}>${f.name}${f.available ? '' : ' (check availability)'}</option>`
-  ).join('');
+  const categories = [...new Set(fabricData.fabrics.map(f => f.category))];
+  return categories.map(cat => `
+    <div style="margin-bottom:0.8rem;">
+      <div style="font-size:0.78rem; font-weight:700; color:var(--color-leaf-deep); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.4rem;">${cat === 'Standard' ? 'Solid Colors' : 'Patterns'}</div>
+      <div class="option-picker">
+        ${fabricData.fabrics.filter(f => f.category === cat).map(f => `
+          <div class="option-card ${f.id === selectedFabricId ? 'selected' : ''}" data-item="${itemId}" data-field="fabric" data-value="${f.id}">
+            <img src="${f.image}" alt="${f.name}">
+            <span>${f.name}${f.available ? '' : ' (check availability)'}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
 }
 
 function onItemFieldChange(e) {
@@ -300,7 +308,7 @@ function maybeShowUpsell(item) {
    SHARED HELPERS
    ============================================================ */
 async function fetchJSON(path) {
-  const res = await fetch(path);
+  const res = await fetch(path, { cache: 'no-store' });
   if (!res.ok) throw new Error('Failed to load ' + path);
   return res.json();
 }
@@ -453,7 +461,7 @@ function validateForm(form) {
     dressItems.forEach(item => {
       const card = document.getElementById(`dress-item-${item.id}`);
       if (!card) return;
-      ['style', 'length', 'sleeves'].forEach(field => {
+      ['style', 'length', 'sleeves', 'fabric'].forEach(field => {
         const hasValue = !!item[field];
         // find the form-group whose visual picker holds cards for this field
         const groupEls = card.querySelectorAll(`[data-field="${field}"]`);
