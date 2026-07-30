@@ -26,10 +26,15 @@ function initNav() {
   const nav = document.querySelector('.main-nav');
   if (!toggle || !nav) return;
   toggle.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+    const isOpen = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.classList.toggle('nav-open', isOpen);
   });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+    document.body.classList.remove('nav-open');
+  }));
 }
 
 /* ---------- FAQ accordion ---------- */
