@@ -177,6 +177,7 @@ p  { margin: 0 0 1em; }
 }
 .tag--available { background: #E4EFE0; color: var(--color-leaf-deep); }
 .tag--sold { background: #F1E3DD; color: var(--color-coral); }
+.tag--coming-soon { background: var(--color-sand); color: var(--color-charcoal-soft); display: inline-block; }
 .feature-list { margin: 0.3rem 0 0.6rem; font-size: var(--step--1); color: var(--color-charcoal-soft); }
 .feature-list li::before { content: "✓ "; color: var(--color-leaf); font-weight: 700; }
 
