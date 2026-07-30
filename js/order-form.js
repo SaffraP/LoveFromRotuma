@@ -6,7 +6,7 @@
 // Google Apps Script Web App URL (see /backend/README.md).
 // =========================================================
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeg28bSeDtm6chJZ4Ew7vLOlgdswz663U1u6_muS2mwJARtjm9cgnZq-IvaxYT8NutSQ/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyd5j_fdBLrbIHtiXxF_3xPFDx9NC28n1_jGHSXf1ttOn3Xlgco28Zh1F--QNuRv1f9xw/exec';
 
 let dressData = null;
 let fabricData = null;
