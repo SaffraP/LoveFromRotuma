@@ -83,7 +83,7 @@ Each dress style in `data/dresses.json` has two image fields:
 - `"image"` — the single photo used on the catalog card. **Set this to your blacked-out silhouette/shape photo** — this is what customers see while browsing and choosing a style.
 - `"gallery"` — an array of photo paths shown when someone clicks "View Photos" or the card image. **Put the silhouette first, then your model photos in different patterns.**
 
-Your silhouette photos live in `images/DressStyle/` following the pattern `Dress_<StyleName>_Outline.jpg` (e.g. `Dress_ALine_Outline.jpg`) — already wired up for A-Line, Sheath/Column, Maxi, and Midi. **Still needed:** a silhouette for the Girls' Dress style — currently showing a placeholder until that's uploaded (same naming pattern works fine, e.g. `Dress_Girls_Outline.jpg`, then update that style's `image`/`gallery[0]` in `data/dresses.json`).
+Your silhouette photos live in `images/DressStyle/` following the pattern `Dress_<StyleName>_Outline.jpg` (e.g. `Dress_ALine_Outline.jpg`) — wired up for A-Line, Sheath/Column, Maxi, and Midi (adult styles). The full Children's Collection (7 styles: A-Line, Sheath/Column, Babydoll, Drop Waist, Empire Waist, Shift, Shirred/Smocked) now lives in `images/DressChild/` and is wired up too.
 
 Once you have model-wearing-different-patterns photos, add them to each style's `gallery` array after the silhouette, e.g.:
 ```json
@@ -99,7 +99,9 @@ On the order form, customers pick body style, length, and sleeves as separate vi
 
 **Sleeves are done** — your 7 uploaded outlines in `images/SleeveStyle/` (Sleeveless, Thin Straps, Strapless, Off The Shoulder, Puff, Puff Long, Loose) are all wired in and replace the original 3-option placeholder set.
 
-**Lengths still need photos** — 3 needed (Knee, Midi, Floor Length), currently placeholder graphics. Same idea as the dress styles: one photo/diagram per length, shared across every body style, e.g. `images/LengthStyle/Length_Knee_Outline.jpg`, then update `lengthOptions` in `data/dresses.json` to point to them.
+**Lengths are done too** — your 3 photos in `images/DressLength/` (Knee, Midi, Floor) are wired in and replace the placeholder graphics.
+
+Everything on the original photo list is now wired up except: model/pattern gallery photos for each style, fabrics, team photos, hero photo, and premade dress photos.
 
 ### Fabrics — colors and patterns
 Each fabric in `data/fabrics.json` has an `"image"` field. Upload solid-color swatches and pattern swatches into `images/fabrics/`, then point each fabric's `"image"` to its file. The existing `"category"` field ("Standard" for solids vs "By Availability" for prints) already separates these into the two groups you described — add more fabric entries the same way if you have more than the current five.

@@ -103,24 +103,178 @@
       "description": "Made-to-order dresses sized just for little ones.",
       "styles": [
         {
-          "id": "girls-dress",
-          "name": "Girls' Dress",
-          "image": "images/placeholders/dress-placeholder.svg",
+          "id": "child-a-line",
+          "name": "A-Line",
+          "image": "images/DressChild/ChildDress_ALine.jpg",
           "price_adult_from": null,
           "price_child_from": 29,
           "lengths": [
             "Knee Length",
-            "Midi"
+            "Midi",
+            "Floor Length"
           ],
           "sleeves": [
             "Sleeveless",
-            "Elastic Sleeve",
+            "Thin Straps",
+            "Strapless",
+            "Off The Shoulder",
+            "Puff Sleeve",
+            "Puff Long Sleeve",
             "Loose Sleeve"
           ],
-          "description": "Comfortable, durable, and made to fit growing girls.",
+          "description": "A timeless, flattering silhouette that flares gently from the waist.",
           "gallery": [
-            "images/placeholders/dress-gallery-1.svg",
-            "images/placeholders/dress-gallery-2.svg"
+            "images/DressChild/ChildDress_ALine.jpg"
+          ]
+        },
+        {
+          "id": "child-sheath-column",
+          "name": "Sheath / Column",
+          "image": "images/DressChild/ChildDress_ChildOrSheath.jpg",
+          "price_adult_from": null,
+          "price_child_from": 29,
+          "lengths": [
+            "Knee Length",
+            "Midi",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Thin Straps",
+            "Strapless",
+            "Off The Shoulder",
+            "Puff Sleeve",
+            "Puff Long Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A simple, streamlined shape for a neat, polished look.",
+          "gallery": [
+            "images/DressChild/ChildDress_ChildOrSheath.jpg"
+          ]
+        },
+        {
+          "id": "child-babydoll",
+          "name": "Babydoll",
+          "image": "images/DressChild/ChildDress_Babydoll.jpg",
+          "price_adult_from": null,
+          "price_child_from": 29,
+          "lengths": [
+            "Knee Length",
+            "Midi",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Thin Straps",
+            "Strapless",
+            "Off The Shoulder",
+            "Puff Sleeve",
+            "Puff Long Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A fitted bodice with a loose, flowing skirt \u2014 playful and comfortable.",
+          "gallery": [
+            "images/DressChild/ChildDress_Babydoll.jpg"
+          ]
+        },
+        {
+          "id": "child-drop-waist",
+          "name": "Drop Waist",
+          "image": "images/DressChild/ChildDress_DropWaist.jpg",
+          "price_adult_from": null,
+          "price_child_from": 29,
+          "lengths": [
+            "Knee Length",
+            "Midi",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Thin Straps",
+            "Strapless",
+            "Off The Shoulder",
+            "Puff Sleeve",
+            "Puff Long Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A lowered waistline with a gathered skirt for a fun, twirl-friendly fit.",
+          "gallery": [
+            "images/DressChild/ChildDress_DropWaist.jpg"
+          ]
+        },
+        {
+          "id": "child-empire-waist",
+          "name": "Empire Waist",
+          "image": "images/DressChild/ChildDress_EmpireWaist.jpg",
+          "price_adult_from": null,
+          "price_child_from": 29,
+          "lengths": [
+            "Knee Length",
+            "Midi",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Thin Straps",
+            "Strapless",
+            "Off The Shoulder",
+            "Puff Sleeve",
+            "Puff Long Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A raised waistline just under the bust, flowing loosely to the hem.",
+          "gallery": [
+            "images/DressChild/ChildDress_EmpireWaist.jpg"
+          ]
+        },
+        {
+          "id": "child-shift",
+          "name": "Shift",
+          "image": "images/DressChild/ChildDress_Shift.jpg",
+          "price_adult_from": null,
+          "price_child_from": 29,
+          "lengths": [
+            "Knee Length",
+            "Midi",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Thin Straps",
+            "Strapless",
+            "Off The Shoulder",
+            "Puff Sleeve",
+            "Puff Long Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A simple, straight-cut silhouette \u2014 easy to wear and move in.",
+          "gallery": [
+            "images/DressChild/ChildDress_Shift.jpg"
+          ]
+        },
+        {
+          "id": "child-shirred-smocked",
+          "name": "Shirred / Smocked",
+          "image": "images/DressChild/ChildDress_ShirredOrSmocked.jpg",
+          "price_adult_from": null,
+          "price_child_from": 29,
+          "lengths": [
+            "Knee Length",
+            "Midi",
+            "Floor Length"
+          ],
+          "sleeves": [
+            "Sleeveless",
+            "Thin Straps",
+            "Strapless",
+            "Off The Shoulder",
+            "Puff Sleeve",
+            "Puff Long Sleeve",
+            "Loose Sleeve"
+          ],
+          "description": "A gathered, stretchy bodice for a comfortable, adjustable fit.",
+          "gallery": [
+            "images/DressChild/ChildDress_ShirredOrSmocked.jpg"
           ]
         }
       ]
@@ -181,17 +335,17 @@
     {
       "id": "knee",
       "name": "Knee Length",
-      "image": "images/placeholders/length-knee.svg"
+      "image": "images/DressLength/DressLength_Knee.jpg"
     },
     {
       "id": "midi",
       "name": "Midi",
-      "image": "images/placeholders/length-midi.svg"
+      "image": "images/DressLength/DressLength_Midi.jpg"
     },
     {
       "id": "floor",
       "name": "Floor Length",
-      "image": "images/placeholders/length-floor.svg"
+      "image": "images/DressLength/DressLength_Floor.jpg"
     }
   ],
   "sleeveOptions": [
