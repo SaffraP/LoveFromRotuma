@@ -209,6 +209,10 @@ async function renderPremade() {
   if (!root) return;
   try {
     const items = await fetchJSON('data/premade.json');
+    if (!items.length) {
+      root.innerHTML = '<p class="center">No premade dresses are listed right now — check back soon, or start a custom order instead.</p>';
+      return;
+    }
     root.innerHTML = items.map(item => `
       <div class="card">
         <div class="card-media"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>
