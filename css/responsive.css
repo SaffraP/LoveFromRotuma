@@ -4,7 +4,12 @@
 
 @media (max-width: 900px) {
   .hero .container { grid-template-columns: 1fr; }
-  .hero-image { order: -1; aspect-ratio: 16/10; }
+  .hero-image { order: -1; aspect-ratio: 4/5; }
+  /* Top hero banner photo specifically: show it at its natural proportions
+     instead of forcing a crop shape, since the source photo doesn't match
+     any fixed ratio well and was getting cropped too tight either way. */
+  .hero .hero-image { aspect-ratio: auto; background: none; }
+  .hero .hero-image img { width: 100%; height: auto; object-fit: contain; }
   .timeline { grid-template-columns: repeat(2, 1fr); }
 }
 
