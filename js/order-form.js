@@ -153,7 +153,7 @@ function renderDressItems() {
           <option value="" disabled ${!item.fabric ? 'selected' : ''}>Select a fabric</option>
           ${fabricOptionsHTML(item.fabric)}
         </select>
-        <div class="hint">If your selected fabric is unavailable, we'll contact you to discuss alternatives before production begins.</div>
+        <div class="hint">If your selected fabric is unavailable, we'll contact you to discuss alternatives before production begins. Due to natural batch differences, exact colors and patterns may vary slightly from what's shown.</div>
       </div>
     </div>
   `).join('');
@@ -180,7 +180,7 @@ function styleOptionPickerHTML(itemId, selectedStyleId, dressType) {
     <div style="margin-bottom:0.8rem;">
       <div style="font-size:0.78rem; font-weight:700; color:var(--color-leaf-deep); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.4rem;">${col.name}</div>
       <div class="option-picker">
-        ${col.styles.map(s => `
+        ${col.styles.filter(s => !s.comingSoon).map(s => `
           <div class="option-card ${s.id === selectedStyleId ? 'selected' : ''}" data-item="${itemId}" data-field="style" data-value="${s.id}">
             <img src="${s.image}" alt="${s.name}">
             <span>${s.name}</span>

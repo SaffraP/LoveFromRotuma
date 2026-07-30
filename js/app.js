@@ -85,12 +85,20 @@ function styleCardHTML(style) {
     style.price_child_from ? `Children from FJD $${style.price_child_from}` : null
   ].filter(Boolean).join(' &middot; ');
 
+  const comingSoonBadge = style.comingSoon
+    ? `<span class="tag tag--coming-soon" style="margin-bottom:0.4rem;">Coming Soon</span>`
+    : '';
+  const orderButton = style.comingSoon
+    ? `<button type="button" class="btn btn-secondary" style="width:100%;" disabled>Coming Soon</button>`
+    : `<a class="btn btn-primary" href="order.html?style=${encodeURIComponent(style.id)}">Order This Style</a>`;
+
   return `
     <div class="card">
       <div class="card-media" data-gallery-style="${style.id}" style="cursor:pointer;" title="View photos">
         <img src="${style.image}" alt="${style.name}" loading="lazy">
       </div>
       <div class="card-body">
+        ${comingSoonBadge}
         <h3>${style.name}</h3>
         <p style="font-size:var(--step--1); color:var(--color-charcoal-soft); margin-bottom:0.2rem;">${style.description}</p>
         <div class="price">${priceLine}</div>
@@ -101,7 +109,7 @@ function styleCardHTML(style) {
           <li>Standard or custom size</li>
         </ul>
         <button type="button" class="btn btn-secondary" style="width:100%; margin-bottom:0.6rem;" data-gallery-style="${style.id}">View Photos</button>
-        <a class="btn btn-primary" href="order.html?style=${encodeURIComponent(style.id)}">Order This Style</a>
+        ${orderButton}
       </div>
     </div>
   `;
